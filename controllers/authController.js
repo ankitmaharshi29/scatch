@@ -1,4 +1,4 @@
-//const {generateToken }= require("../utils/generateToken");
+const {generateToken }= require("../utils/generateToken");
 const userModel = require("../models/user-model");
 const bcrypt = require("bcrypt");
 const jwt= require("jsonwebtoken")
@@ -18,10 +18,10 @@ module.exports.registerUser =  (req, res) => {
           password: hash,
           fullname,
         });
-        console.log(user);
+    
         
 
-        let token = jwt.sign({ email, id: user._id });
+        let token = generateToken
         res.cookie("token", token);
 
         res.send(user);
