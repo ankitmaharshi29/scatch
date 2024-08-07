@@ -18,6 +18,8 @@ module.exports.registerUser =  (req, res) => {
           password: hash,
           fullname,
         });
+        console.log(user);
+        
 
         let token = jwt.sign({ email, id: user._id });
         res.cookie("token", token);

@@ -6,6 +6,7 @@ router.get("/",(req,res)=>{
     res.send("seyy hi")
 });
 
+//console.log(process.env.NODE_ENV);
 
 if(process.env.NODE_ENV === "development"){
 
