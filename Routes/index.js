@@ -1,8 +1,14 @@
 const express = require("express");
-const router= express.Router();
+const router = express.Router();
+const isLoggedin = require("../middlewares/isLoggedIn");
 
-
-router.get("/",(req,res)=>{
-    res.render("index")
+router.get("/", function (req, res) {
+  let error = req.flash("error");
+  res.render("index", { error });
 });
-module.exports=router
+
+router.get("/shop", isLoggedin, function (req, res) {
+  res.render("shop");
+});
+
+module.exports = router;
