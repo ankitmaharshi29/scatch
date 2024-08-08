@@ -1,4 +1,4 @@
-const {generateToken }= require("../utils/generateToken");
+const generateToken = require("../utils/generateToken");
 const userModel = require("../models/user-model");
 const bcrypt = require("bcrypt");
 const jwt= require("jsonwebtoken")
@@ -22,8 +22,10 @@ module.exports.registerUser =  async (req, res) => {
     
         
 
-        let token = generateToken;
+        let token = generateToken(user);
         res.cookie("token", token);
+         console.log(user);
+         
 
         res.send(user);
       });
@@ -41,7 +43,7 @@ module.exports.loginuser =  async (req, res) => {
 
     bcrypt.compare(password,user.password,(err,result)=>{
       if(result){
-        let token = generateToken
+        let token = generateToken(user);
         res.cookie("token",token);
         res.redirect("/shop")
       }
@@ -53,3 +55,8 @@ module.exports.loginuser =  async (req, res) => {
     })
       
     } 
+
+  module.exports.logoutuser =   async(req,res)=>{
+    res.clearCookie("token","");
+    res.redirect("/")
+  }
