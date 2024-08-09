@@ -1,0 +1,25 @@
+<%- include('./partials/header') %>
+
+<div class="w-full h-screen px-20 py-20">
+  <h3 class="text-xl mb-5">My Orders</h3>
+  <table class="min-w-full bg-white">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Date</th>
+        <th>Total</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(function(order) { %>
+        <tr>
+            <td><%= order.id %></td>
+            <td><%= order.date %></td>
+            <td><%= order.total %></td>
+            <td><%= order.status %></td>
+          </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>

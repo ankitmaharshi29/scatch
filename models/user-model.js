@@ -13,10 +13,8 @@ const userSchema = mongoose.Schema({
        ref: "product",
     }],
 
-    orders:{
-        type:Array,
-        default:[],
-    },
+    orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }],
+
     contact:Number,
     picture:String,
 });
